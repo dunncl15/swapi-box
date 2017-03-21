@@ -30,44 +30,56 @@ class App extends Component {
     switch (value) {
       case 'people':
         if (!this.state.people.length)
-        data.results.map(person => {
-          const { name, homeworld, species, population_of_homeworld } = person;
-          this.setState({ people: this.state.people.concat([{
-            name, homeworld, species, population_of_homeworld }]) });
-        });
+        this.getPeople(data);
         break;
       case 'planets':
         if (!this.state.planets.length)
-        data.results.map(planet => {
-          const { name, terrain, population, climate, residents } = planet
-          this.setState({ planets: this.state.planets.concat([{
-            name, terrain, population, climate, residents }]) });
-        });
+        this.getPlanets(data);
         break;
       case 'vehicles':
-      if (!this.state.vehicles.length)
-        data.results.map(vehicle => {
-          const { name, model, vehicle_class, number_of_passengers} = vehicle;
-          this.setState({ vehicles: this.state.vehicles.concat([{
-            name, model, vehicle_class, number_of_passengers }]) });
-        });
+        if (!this.state.vehicles.length)
+        this.getVehicles(data)
         break;
       }
   }
 
+  getPeople(data) {
+    return data.results.map(person => {
+      const { name, homeworld, species, population_of_homeworld } = person;
+      this.setState({ people: this.state.people.concat([{
+        name, homeworld, species, population_of_homeworld }]) });
+    });
+  }
+
+  getPlanets(data) {
+    data.results.map(planet => {
+      const { name, terrain, population, climate, residents } = planet
+      this.setState({ planets: this.state.planets.concat([{
+        name, terrain, population, climate, residents }]) });
+    });
+  }
+
+  getVehicles(data) {
+    data.results.map(vehicle => {
+      const { name, model, vehicle_class, number_of_passengers} = vehicle;
+      this.setState({ vehicles: this.state.vehicles.concat([{
+        name, model, vehicle_class, number_of_passengers }]) });
+    });
+  }
+
   componentDidMount() {
-  fetch('http://swapi.co/api/films')
-  .then((response) => {
-    return response.json()
-  })
-  .then((data) => {
-    const index = Math.floor(Math.random() * data.count);
-    const { opening_crawl, release_date, title } = data.results[index];
-    this.setState({
-      openingFilm: { opening_crawl, release_date, title }
+    fetch('http://swapi.co/api/films')
+    .then((response) => {
+      return response.json()
     })
-  })
-}
+    .then((data) => {
+      const index = Math.floor(Math.random() * data.count);
+      const { opening_crawl, release_date, title } = data.results[index];
+      this.setState({
+        openingFilm: { opening_crawl, release_date, title }
+      })
+    })
+  }
 
   render() {
     return (
