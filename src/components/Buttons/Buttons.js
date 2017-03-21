@@ -7,15 +7,15 @@ const Buttons = ({ film, fetchData }) => {
   return (
     <div>
       <button className="cat-btn"
-              onClick={(e) => fetchData(e.target.innerText.toLowerCase(), e)}>
+              onClick={(e) => fetchData('people', e)}>
       People
       </button>
       <button className="cat-btn"
-              onClick={(e) => fetchData(e.target.innerText.toLowerCase(), e)}>
+              onClick={(e) => fetchData('planets', e)}>
       Planets
       </button>
       <button className="cat-btn"
-              onClick={(e) => fetchData(e.target.innerText.toLowerCase(), e)}>
+              onClick={(e) => fetchData('vehicles', e)}>
       Vehicles
       </button>
       <Film film={film}/>

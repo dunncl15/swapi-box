@@ -55,6 +55,9 @@ class App extends Component {
       }
   }
 
+  // possibly function for each one of them ^
+  // 41 and 50 could be the same 
+
   componentDidMount() {
   fetch('http://swapi.co/api/films')
   .then((response) => {
