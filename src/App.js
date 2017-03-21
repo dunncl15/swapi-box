@@ -22,43 +22,37 @@ class App extends Component {
       return response.json()
     })
     .then((data) => {
-      switch (value) {
-        case 'people':
-          data.results.map(person => {
-            const { name, homeworld, species, population_of_homeworld } = person;
-            this.setState({ people: this.state.people.concat([{
-              name,
-              homeworld,
-              species,
-              population_of_homeworld
-            }]) })
-          });
-          break;
-        case 'planets':
-          data.results.map(planet => {
-            const { name, terrain, population, climate, residents } = planet
-            this.setState({ planets: this.state.planets.concat([{
-              name,
-              terrain,
-              population,
-              climate,
-              residents
-            }]) })
-          });
-          break;
-        case 'vehicles':
-          data.results.map(vehicle => {
-            const { name, model, vehicle_class, number_of_passengers} = vehicle;
-            this.setState({ vehicles: this.state.vehicles.concat([{
-              name,
-              model,
-              vehicle_class,
-              number_of_passengers
-            }]) })
-          });
-          break;
-        }
-      })
+      this.fetchHelper(data, value);
+    })
+  }
+
+  fetchHelper(data, value) {
+    switch (value) {
+      case 'people':
+        if (!this.state.people.length)
+        data.results.map(person => {
+          const { name, homeworld, species, population_of_homeworld } = person;
+          this.setState({ people: this.state.people.concat([{
+            name, homeworld, species, population_of_homeworld }]) });
+        });
+        break;
+      case 'planets':
+        if (!this.state.planets.length)
+        data.results.map(planet => {
+          const { name, terrain, population, climate, residents } = planet
+          this.setState({ planets: this.state.planets.concat([{
+            name, terrain, population, climate, residents }]) });
+        });
+        break;
+      case 'vehicles':
+      if (!this.state.vehicles.length)
+        data.results.map(vehicle => {
+          const { name, model, vehicle_class, number_of_passengers} = vehicle;
+          this.setState({ vehicles: this.state.vehicles.concat([{
+            name, model, vehicle_class, number_of_passengers }]) });
+        });
+        break;
+      }
   }
 
   componentDidMount() {
@@ -79,7 +73,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Swapibox</h2>
+          <h2>Sw-api-box</h2>
         </div>
         <Buttons fetchData={(type, e) => this.fetchData(type, e)} film={this.state.openingFilm} />
       </div>

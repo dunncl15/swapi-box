@@ -1,6 +1,8 @@
 import React from 'react';
 import Film from '../Film/Film';
 
+import './Buttons.css';
+
 const Buttons = ({ film, fetchData }) => {
   return (
     <div>

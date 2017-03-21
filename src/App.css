@@ -21,6 +21,7 @@
   font-size: 220%;
   height: 250px;
   color: #d7c419;
+  z-index: 3;
 }
 
 .App-header h2 {
