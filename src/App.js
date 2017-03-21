@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Buttons from './components/Buttons/Buttons.js'
@@ -52,7 +51,7 @@ class App extends Component {
   }
 
   getPlanets(data) {
-    data.results.map(planet => {
+    return data.results.map(planet => {
       const { name, terrain, population, climate, residents } = planet
       this.setState({ planets: this.state.planets.concat([{
         name, terrain, population, climate, residents }]) });
@@ -60,7 +59,7 @@ class App extends Component {
   }
 
   getVehicles(data) {
-    data.results.map(vehicle => {
+    return data.results.map(vehicle => {
       const { name, model, vehicle_class, number_of_passengers} = vehicle;
       this.setState({ vehicles: this.state.vehicles.concat([{
         name, model, vehicle_class, number_of_passengers }]) });
