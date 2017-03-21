@@ -7,15 +7,15 @@ const Buttons = ({ film, fetchData }) => {
   return (
     <div>
       <button className="cat-btn"
-              onClick={(e) => fetchData('people', e)}>
+              onClick={() => fetchData('people')}>
       People
       </button>
       <button className="cat-btn"
-              onClick={(e) => fetchData('planets', e)}>
+              onClick={() => fetchData('planets')}>
       Planets
       </button>
       <button className="cat-btn"
-              onClick={(e) => fetchData('vehicles', e)}>
+              onClick={() => fetchData('vehicles')}>
       Vehicles
       </button>
       <Film film={film}/>
