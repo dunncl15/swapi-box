@@ -2,7 +2,7 @@ import React              from 'react';
 import { mount, shallow } from 'enzyme';
 import ReactDOM           from 'react-dom';
 
-import Film            from './Film';
+import Film               from './Film';
 
 describe('Film', () => {
   const film = {

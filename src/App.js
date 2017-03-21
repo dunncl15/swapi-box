@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Buttons from './components/Buttons/Buttons.js'
+import Buttons from './components/Buttons/Buttons.js';
+import People from './components/People/People.js';
 
 
 class App extends Component {
@@ -9,13 +10,11 @@ class App extends Component {
     super()
     this.state = {
       openingFilm: {},
-      people: [],
-      planets: [],
-      vehicles: []
+      selectedCategory: []
     }
   }
 
-  fetchData(value, e) {
+  fetchData(value) {
     fetch(`http://swapi.co/api/${value}`)
     .then((response) => {
       return response.json()
@@ -28,15 +27,15 @@ class App extends Component {
   fetchHelper(data, value) {
     switch (value) {
       case 'people':
-        if (!this.state.people.length)
+        this.setState({selectedCategory: []})
         this.getPeople(data);
         break;
       case 'planets':
-        if (!this.state.planets.length)
+        this.setState({selectedCategory: []})
         this.getPlanets(data);
         break;
       case 'vehicles':
-        if (!this.state.vehicles.length)
+        this.setState({selectedCategory: []})
         this.getVehicles(data)
         break;
       }
@@ -45,7 +44,7 @@ class App extends Component {
   getPeople(data) {
     return data.results.map(person => {
       const { name, homeworld, species, population_of_homeworld } = person;
-      this.setState({ people: this.state.people.concat([{
+      this.setState({ selectedCategory: this.state.selectedCategory.concat([{
         name, homeworld, species, population_of_homeworld }]) });
     });
   }
@@ -53,7 +52,7 @@ class App extends Component {
   getPlanets(data) {
     return data.results.map(planet => {
       const { name, terrain, population, climate, residents } = planet
-      this.setState({ planets: this.state.planets.concat([{
+      this.setState({ selectedCategory: this.state.selectedCategory.concat([{
         name, terrain, population, climate, residents }]) });
     });
   }
@@ -61,7 +60,7 @@ class App extends Component {
   getVehicles(data) {
     return data.results.map(vehicle => {
       const { name, model, vehicle_class, number_of_passengers} = vehicle;
-      this.setState({ vehicles: this.state.vehicles.concat([{
+      this.setState({ selectedCategory: this.state.selectedCategory.concat([{
         name, model, vehicle_class, number_of_passengers }]) });
     });
   }
@@ -86,7 +85,8 @@ class App extends Component {
         <div className="App-header">
           <h2>Sw-api-box</h2>
         </div>
-        <Buttons fetchData={(type, e) => this.fetchData(type, e)} film={this.state.openingFilm} />
+        <Buttons fetchData={(type) => this.fetchData(type)} film={this.state.openingFilm} />
+        <People selectedCategory={this.state.selectedCategory} fetchData={(type) => this.fetchData(type)}/>
       </div>
     );
   }
