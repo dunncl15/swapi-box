@@ -2,7 +2,7 @@ import React from 'react';
 import './CardContainer.css';
 import PeopleCard from '../PeopleCards/PeopleCards.js'
 // import PlanetCard from '../PlanetCard/PlanetCard.js'
-import VehicleCard from '../VehicleCard/VehicleCards.js'
+import VehicleCard from '../VehicleCards/VehicleCards.js'
 
 const CardContainer = ({ selectedCategory, selected }) => {
 
