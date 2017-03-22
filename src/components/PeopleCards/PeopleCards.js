@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import './PeopleCard.css'
+import './PeopleCards.css'
 
 class PeopleCard extends Component {
   constructor() {
     super()
     this.state = {
-      peopleData: []
+      homeworld: '',
+      species: '',
+      population: '',
+      language: ''
     }
-
   }
 
   componentDidMount() {
-    this.props.selectedCategory.forEach(obj => {
-      this.fetchHomeWorld(obj.homeworld);
-      this.fetchSpecies(obj.species[0]);
-    })
+    this.fetchHomeWorld(this.props.homeworld);
+    this.fetchSpecies(this.props.species[0])
+
   }
 
   fetchHomeWorld(url) {
@@ -23,14 +24,10 @@ class PeopleCard extends Component {
       return response.json();
     })
     .then((data) => {
-      this.props.selectedCategory.map(obj => {
-        if (obj.homeworld) {
-          obj.homeworld = data.name;
-          obj.population_of_homeworld = data.population;
-          obj.favorite = false;
-        }
+      this.setState({
+        homeworld: data.name,
+        population: data.population
       })
-      this.setState({ peopleData: this.props.selectedCategory })
     })
   }
 
@@ -40,33 +37,23 @@ class PeopleCard extends Component {
       return response.json();
     })
     .then((data) => {
-      this.props.selectedCategory.map(obj => {
-        if (obj.name) {
-          obj.species = data.name;
-          obj.language = data.language;
-        }
+      this.setState({
+        species: data.name,
+        language: data.language
       })
-      this.setState({ peopleData: this.props.selectedCategory })
     })
   }
 
-
   render() {
     return (
-      <div>
-      {this.state.peopleData.map((obj, i) => {
-        return (
-          <article key={i} className="PeopleCard">
-            <h3>Name: {obj.name}</h3>
-            <p>Homeworld: {obj.homeworld}</p>
-            <p>Species: {obj.species}</p>
-            <p>Language: {obj.language}</p>
-            <p>Population: {obj.population_of_homeworld}</p>
-            <button className="favorite">Favorite</button>
-          </article>
-        )
-      })}
-      </div>
+      <article className="PeopleCard">
+        <h3>{this.props.name}</h3>
+        <p>Homeworld: {this.state.homeworld}</p>
+        <p>Species: {this.state.species}</p>
+        <p>Language: {this.state.language}</p>
+        <p>Population: {this.state.population}</p>
+        <button className="favorite">Favorite</button>
+      </article>
     )
   }
 }

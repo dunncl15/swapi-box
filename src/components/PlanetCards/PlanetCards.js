@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './PlanetCard.css'
+import './PlanetCards.css'
 
 class PlanetCard extends Component {
   constructor() {
@@ -28,7 +28,6 @@ class PlanetCard extends Component {
           if (!obj.residents.length) {
             obj.residents = 'none'
           }
-          helpResidents()
         })
         this.setState({ planetData: this.props.selectedCategory })
       })
