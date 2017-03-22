@@ -21,30 +21,8 @@ class App extends Component {
       return response.json()
     })
     .then((data) => {
-      this.setState({ selected: value})
-      this.fetchHelper(data, value);
+      this.setState({ selected: value, selectedCategory: data.results})
     })
-  }
-
-  fetchHelper(data, value) {
-    switch (value) {
-      case 'people':
-        this.setState({selectedCategory: []})
-        this.updateState(data);
-        break;
-      case 'planets':
-        this.setState({selectedCategory: []})
-        this.updateState(data);
-        break;
-      case 'vehicles':
-        this.setState({selectedCategory: []})
-        this.updateState(data);
-        break;
-      }
-  }
-
-  updateState(data) {
-    this.setState({ selectedCategory: this.state.selectedCategory.concat(data.results) })
   }
 
   componentDidMount() {

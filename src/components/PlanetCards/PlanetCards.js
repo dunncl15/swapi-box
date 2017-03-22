@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './PlanetCard.css'
+import './PlanetCards.css'
 
 class PlanetCard extends Component {
   constructor() {
