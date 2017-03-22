@@ -5,11 +5,10 @@ class PeopleCard extends Component {
   constructor() {
     super()
     this.state = {
-      peopleData: [],
+      peopleData: []
     }
 
   }
-
 
   componentDidMount() {
     this.props.selectedCategory.forEach(obj => {

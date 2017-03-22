@@ -10,7 +10,8 @@ class App extends Component {
     super()
     this.state = {
       openingFilm: {},
-      selectedCategory: []
+      selectedCategory: [],
+      selected: ''
     }
   }
 
@@ -20,6 +21,7 @@ class App extends Component {
       return response.json()
     })
     .then((data) => {
+      this.setState({ selected: value})
       this.fetchHelper(data, value);
     })
   }
@@ -28,43 +30,21 @@ class App extends Component {
     switch (value) {
       case 'people':
         this.setState({selectedCategory: []})
-        this.getPeople(data);
+        this.updateState(data);
         break;
       case 'planets':
         this.setState({selectedCategory: []})
-        this.getPlanets(data);
+        this.updateState(data);
         break;
       case 'vehicles':
         this.setState({selectedCategory: []})
-        this.getVehicles(data)
+        this.updateState(data);
         break;
       }
   }
 
-
-  getPeople(data) {
-    return data.results.map(person => {
-      const { name, homeworld, species, population_of_homeworld } = person;
-      this.setState({ selectedCategory: this.state.selectedCategory.concat([{
-        name, homeworld, species, population_of_homeworld }]) });
-    });
-  }
-
-  getPlanets(data) {
-    console.log(data);
-    return data.results.map(planet => {
-      const { name, terrain, population, climate, residents } = planet
-      this.setState({ selectedCategory: this.state.selectedCategory.concat([{
-        name, terrain, population, climate, residents }]) });
-    });
-  }
-
-  getVehicles(data) {
-    return data.results.map(vehicle => {
-      const { name, model, vehicle_class, number_of_passengers} = vehicle;
-      this.setState({ selectedCategory: this.state.selectedCategory.concat([{
-        name, model, vehicle_class, number_of_passengers }]) });
-    });
+  updateState(data) {
+    this.setState({ selectedCategory: this.state.selectedCategory.concat(data.results) })
   }
 
   componentDidMount() {
@@ -87,9 +67,11 @@ class App extends Component {
         <div className="App-header">
           <h2>Swapi-box</h2>
         </div>
-        <Buttons fetchData={(type) => this.fetchData(type)} film={this.state.openingFilm} />
+        <Buttons
+        fetchData={(type) => this.fetchData(type)} film={this.state.openingFilm} />
         { this.state.selectedCategory.length === 10 &&
         <CardContainer
+        selected={this.state.selected}
         selectedCategory={this.state.selectedCategory}
         /> }
       </div>
