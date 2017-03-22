@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Buttons from './components/Buttons/Buttons.js';
-import People from './components/People/People.js';
+import CardContainer from './components/CardContainer/CardContainer.js';
 
 
 class App extends Component {
@@ -41,6 +41,7 @@ class App extends Component {
       }
   }
 
+
   getPeople(data) {
     return data.results.map(person => {
       const { name, homeworld, species, population_of_homeworld } = person;
@@ -50,6 +51,7 @@ class App extends Component {
   }
 
   getPlanets(data) {
+    console.log(data);
     return data.results.map(planet => {
       const { name, terrain, population, climate, residents } = planet
       this.setState({ selectedCategory: this.state.selectedCategory.concat([{
@@ -83,10 +85,13 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Sw-api-box</h2>
+          <h2>Swapi-box</h2>
         </div>
         <Buttons fetchData={(type) => this.fetchData(type)} film={this.state.openingFilm} />
-        <People selectedCategory={this.state.selectedCategory} fetchData={(type) => this.fetchData(type)}/>
+        { this.state.selectedCategory.length === 10 &&
+        <CardContainer
+        selectedCategory={this.state.selectedCategory}
+        /> }
       </div>
     );
   }

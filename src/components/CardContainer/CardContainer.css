@@ -1,0 +1,7 @@
+.CardContainer {
+  position: absolute;
+  width: 100%;
+  padding: 0 2.5%;
+  background-color: #fff;
+  color: #000;
+}
