@@ -1,5 +1,5 @@
 import React from 'react';
-import './VehicleCard.css'
+import './VehicleCards.css'
 
 const VehicleCard = ({ name, model, passenger, classCar }) => {
   return (
