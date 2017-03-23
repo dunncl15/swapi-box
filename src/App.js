@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       openingFilm: {},
       selectedCategory: [],
-      selected: ''
+      selected: '',
+      favorites: []
     }
   }
 
@@ -28,7 +29,6 @@ class App extends Component {
     })
   }
 
-
   componentDidMount() {
     fetch('http://swapi.co/api/films')
     .then((response) => {
@@ -43,19 +43,48 @@ class App extends Component {
     })
   }
 
+  addFavorite(name) {
+    const favorites = this.state.selectedCategory.filter(card => card.name === name);
+    this.setState({ favorites: this.state.favorites.concat(favorites) });
+  }
+
+  toggleFavorite(name) {
+    if (!this.state.favorites.length){
+      this.addFavorite(name)
+    }
+    this.state.favorites.map(card => {
+      return card.name !== name ? this.addFavorite(name) : this.removeFavorite(name);
+    })
+  }
+
+  removeFavorite(name) {
+    const index = this.state.favorites.findIndex(card => card.name === name);
+    console.log(index);
+    this.state.favorites.splice(index, 1)
+    this.setState({ favorites: this.state.favorites })
+  }
+
+  renderFavorites(value) {
+    this.setState({ selected: value })
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <h2>Swapi-box</h2>
           <Buttons
-          fetchData={(type) => this.fetchData(type)} />
+          fetchData={(type) => this.fetchData(type)}
+          renderFavorites={(value) => this.renderFavorites(value)}
+          />
         </div>
         <Film film={this.state.openingFilm}/>
         { this.state.selectedCategory.length &&
         <CardContainer
         selected={this.state.selected}
         selectedCategory={this.state.selectedCategory}
+        toggleFavorite={(name) => this.toggleFavorite(name)}
+        favorites={this.state.favorites}
         /> }
       </div>
     );
