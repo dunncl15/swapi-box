@@ -1,0 +1,12 @@
+.PlanetCard {
+  position: relative;
+  padding: 10px;
+  border: 1px solid #fff;
+  background: #eee;
+}
+
+.favorite {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
