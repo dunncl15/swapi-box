@@ -31,11 +31,11 @@ class PlanetCard extends Component {
   render() {
     return (
       <article className="PlanetCard">
-        <h3>Name: {this.props.name}</h3>
-        <p>Terrain: {this.props.terrain}</p>
-        <p>Population: {this.props.population}</p>
-        <p>Climate: {this.props.climate}</p>
-        <p>Residents: {this.state.residents.length ? this.state.residents.join(', ') : 'none'}</p>
+        <h3><span className="title">Name:</span> {this.props.name}</h3>
+        <p><span className="title">Terrain:</span> {this.props.terrain}</p>
+        <p><span className="title">Population:</span> {this.props.population}</p>
+        <p><span className="title">Climate:</span> {this.props.climate}</p>
+        <p><span className="title">Residents:</span> {this.state.residents.length ? this.state.residents.join(', ') : 'none'}</p>
         <button
         className="favorite"
         onClick={(name) => this.props.toggleFavorite(this.props.name)}>
