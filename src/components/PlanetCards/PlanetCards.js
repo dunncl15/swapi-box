@@ -36,7 +36,11 @@ class PlanetCard extends Component {
         <p>Population: {this.props.population}</p>
         <p>Climate: {this.props.climate}</p>
         <p>Residents: {this.state.residents.length ? this.state.residents.join(', ') : 'none'}</p>
-        <button className="favorite">Favorite</button>
+        <button
+        className="favorite"
+        onClick={(name) => this.props.toggleFavorite(this.props.name)}>
+        Favorite
+        </button>
       </article>
     )
   }

@@ -8,7 +8,7 @@ class PeopleCard extends Component {
       homeworld: '',
       species: '',
       population: '',
-      language: ''
+      language: '',
     }
   }
 
@@ -52,7 +52,11 @@ class PeopleCard extends Component {
         <p>Species: {this.state.species}</p>
         <p>Language: {this.state.language}</p>
         <p>Population: {this.state.population}</p>
-        <button className="favorite">Favorite</button>
+        <button
+        className="favorite"
+        onClick={(name) => this.props.toggleFavorite(this.props.name)}>
+        Favorite
+        </button>
       </article>
     )
   }
