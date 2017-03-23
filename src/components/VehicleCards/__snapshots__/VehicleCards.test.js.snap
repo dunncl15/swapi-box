@@ -1,0 +1,19 @@
+exports[`VehicleCard renders correctly 1`] = `
+<article
+  className="VehicleCard">
+  <h3 />
+  <p>
+    Model: 
+  </p>
+  <p>
+    Passenger Limit: 
+  </p>
+  <p>
+    Vehicle Class: 
+  </p>
+  <button
+    onClick={[Function]}>
+    Favorite
+  </button>
+</article>
+`;

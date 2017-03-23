@@ -21,12 +21,10 @@ class PlanetCard extends Component {
         return response.json()
       })
       .then(data => {
-        if (this.props.residents.length) {
-          const residents = this.state.residents.push(data);
-          // this.setState({
-          //   residents: this.state.
-          // })
-        }
+        this.state.residents.push(data.name);
+        this.setState({
+          residents: this.state.residents
+        })
       })
     }
 
@@ -43,7 +41,6 @@ class PlanetCard extends Component {
         onClick={(name) => this.props.toggleFavorite(this.props.name)}>
         Favorite
         </button>
-
       </article>
     )
   }
