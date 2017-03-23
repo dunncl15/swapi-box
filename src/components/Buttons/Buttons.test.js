@@ -11,16 +11,9 @@ describe('Buttons', () => {
       <Buttons />
     );
 
-    expect(wrapper.find('button').length).toEqual(3);
+    expect(wrapper.find('button').length).toEqual(4);
   });
 
-  it('Has film component', () => {
-    const wrapper = shallow(
-      <Buttons />
-    );
-
-    expect(wrapper.find('Film').length).toEqual(1);
-  });
 
   it('Film should have props', () => {
     const obj = {
@@ -53,7 +46,7 @@ describe('Buttons', () => {
 
     const button1 = wrapper.find('.cat-btn').first();
     button1.simulate('click');
-    
+
     expect(mockedClick.mock.calls.length).toBe(1);
   });
 

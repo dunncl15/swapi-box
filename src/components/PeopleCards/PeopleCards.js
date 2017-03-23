@@ -48,10 +48,10 @@ class PeopleCard extends Component {
     return (
       <article className="PeopleCard">
         <h3>{this.props.name}</h3>
-        <p>Homeworld: {this.state.homeworld}</p>
-        <p>Species: {this.state.species}</p>
-        <p>Language: {this.state.language}</p>
-        <p>Population: {this.state.population}</p>
+        <p><span className="title">Homeworld:</span> {this.state.homeworld}</p>
+        <p><span className="title">Species:</span> {this.state.species}</p>
+        <p><span className="title">Language:</span> {this.state.language}</p>
+        <p><span className="title">Population:</span> {this.state.population}</p>
         <button
         className="favorite"
         onClick={(name) => this.props.toggleFavorite(this.props.name)}>

@@ -30,30 +30,4 @@ describe('PeopleCard', () => {
     expect(wrapper.find('h3').length).toEqual(1);
   });
 
-  it('should make favorite if button clicked', () => {
-      const wrapper = shallow(
-          <PeopleCard />
-      );
-
-      expect(wrapper).toMatchSnapshot();
-
-      wrapper.find('.favorite').simulate('click');
-
-      expect(wrapper).toMatchSnapshot();
-  });
-
-//   it('renders a favorite button', () => {
-//     const mockedClick = jest.fn();
-//
-//     const wrapper = mount(
-//       <PeopleCard
-//         fakePerson={fakePerson}
-//         fetchData={mockedClick} />
-//     );
-//
-//     expect(wrapper.find('.favorite')).to.have.length(1);
-// });
-
-
-
 })
