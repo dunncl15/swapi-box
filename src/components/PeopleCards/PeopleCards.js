@@ -15,6 +15,7 @@ class PeopleCard extends Component {
   componentDidMount() {
     this.fetchHomeWorld(this.props.homeworld);
     this.fetchSpecies(this.props.species[0])
+
   }
 
   fetchHomeWorld(url) {

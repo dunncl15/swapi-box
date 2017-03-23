@@ -27,6 +27,7 @@ class App extends Component {
     })
   }
 
+
   componentDidMount() {
     fetch('http://swapi.co/api/films')
     .then((response) => {
