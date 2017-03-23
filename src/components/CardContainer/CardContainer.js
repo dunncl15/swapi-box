@@ -6,6 +6,7 @@ import VehicleCard from '../VehicleCards/VehicleCards.js';
 import FavoriteCard from '../Favorites/Favorites.js'
 
 const getPeople = (data, toggleFavorite) => {
+
   return data.map((person, i) => {
     return <PeopleCard
             toggleFavorite={toggleFavorite}
