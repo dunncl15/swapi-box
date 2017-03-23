@@ -1,54 +1,88 @@
 import React from 'react';
 import './CardContainer.css';
-import PeopleCard from '../PeopleCards/PeopleCards.js'
-import PlanetCard from '../PlanetCards/PlanetCards.js'
-import VehicleCard from '../VehicleCards/VehicleCards.js'
+import PeopleCard from '../PeopleCards/PeopleCards.js';
+import PlanetCard from '../PlanetCards/PlanetCards.js';
+import VehicleCard from '../VehicleCards/VehicleCards.js';
+import FavoriteCard from '../Favorites/Favorites.js'
 
-const getPeople = (data) => {
+const getPeople = (data, toggleFavorite) => {
   return data.map((person, i) => {
     return <PeopleCard
+            toggleFavorite={toggleFavorite}
             key={i}
             name={person.name}
-            homeworld={person.homeworld} species={person.species}
+            homeworld={person.homeworld}
+            species={person.species}
             population={person.population_of_homeworld} />
   })
 }
 
-const getPlanets = (data) => {
+const getPlanets = (data, toggleFavorite) => {
   return data.map((planet, i) => {
     return <PlanetCard
-            key={i} name={planet.name} terrain={planet.terrain} climate={planet.climate}
+            toggleFavorite={toggleFavorite}
+            key={i}
+            name={planet.name}
+            terrain={planet.terrain}
+            climate={planet.climate}
             population={planet.population}
             residents={planet.residents} />
   })
 }
 
-const getVehicles = (data) => {
+const getVehicles = (data, toggleFavorite) => {
   return data.map((vehicle, i) => {
     return <VehicleCard
-            name={vehicle.name} />
+            toggleFavorite={toggleFavorite}
+            key={i}
+            name={vehicle.name}
+            model={vehicle.model}
+            passengers={vehicle.passengers}
+            type={vehicle.vehicle_class} />
   })
 }
 
-const getCards = (selected, selectedCategory) => {
+// const getFavorites = (data) => {
+//   return data.map((card, i) => {
+//     return <FavoriteCard
+//             key={i}
+//             name={card.name}
+//             homeworld={card.homeworld}
+//             species={card.species}
+//             population={card.population}
+//             terrain={card.terrain}
+//             climate={card.climate}
+//             residents={card.residents} />
+//   })
+// }
+
+
+const renderFavorites = (favorites) => {
+  return <FavoriteCard favorites={favorites} />
+}
+
+const getCards = (selected, selectedCategory, toggleFavorite, favorites) => {
   if (selected === 'people') {
-    return getPeople(selectedCategory)
+    return getPeople(selectedCategory, toggleFavorite)
   }
 
   if (selected === 'planets') {
-    return getPlanets(selectedCategory)
+    return getPlanets(selectedCategory, toggleFavorite)
   }
 
   if (selected === 'vehicles') {
-    return getVehicles(selectedCategory)
+    return getVehicles(selectedCategory, toggleFavorite)
+  }
+
+  if (selected === 'favorites') {
+    return renderFavorites(favorites);
   }
 }
 
-const CardContainer = ({ selectedCategory, selected }) => {
-
+const CardContainer = ({ selectedCategory, selected, toggleFavorite, favorites }) => {
   return (
     <div className="CardContainer">
-    { getCards(selected, selectedCategory) }
+    { getCards(selected, selectedCategory, toggleFavorite, favorites) }
     </div>
   )
 }
