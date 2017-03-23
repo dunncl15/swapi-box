@@ -2,6 +2,7 @@
   position: relative;
   padding: 10px;
   border: 1px solid #fff;
+  border-radius: 3px;
   background: #eee;
 }
 
@@ -10,16 +11,27 @@
   top: 5px;
   right: 5px;
   margin: 5px;
-  border: 1px solid #FCBE00;
   background-color: #000;
+  border: 1px solid #FCBE00;
+  border-radius: 3px;
   color: #fff;
+  cursor: pointer;
 }
 
 .favorite:hover {
   background-color: #FCBE00;
-  color: #000;
+  color: #fff;
 }
 
 .title {
   font-weight: 700;
+}
+
+@media screen and (min-width: 600px)  {
+
+  .PlanetCard {
+    width: 45%;
+    margin: 15px 0;
+  }
+
 }

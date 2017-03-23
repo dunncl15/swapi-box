@@ -4,6 +4,8 @@ import './Buttons.css';
 const Buttons = ({ fetchData, renderFavorites }) => {
   return (
     <div className="Buttons">
+      <h3 className="select-cat">Select a category</h3>
+      <div className="btn-wrap">
         <button
         className="cat-btn people"
         onClick={() => fetchData('people')}>
@@ -22,6 +24,7 @@ const Buttons = ({ fetchData, renderFavorites }) => {
         <button className="cat-btn" onClick={() => renderFavorites('favorites')}>
         Favorites
         </button>
+      </div>
     </div>
   )
 }

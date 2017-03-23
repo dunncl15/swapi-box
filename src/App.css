@@ -29,7 +29,12 @@
 }
 
 .App-header h2 {
-  margin: 0;
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
   font-weight: bold;
   text-shadow: 1px 1px 1px #eee;
   text-transform: uppercase;
@@ -42,4 +47,10 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media screen and (min-width: 600px) {
+  .App-header {
+    height: 200px;
+  }
 }
