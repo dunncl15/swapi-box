@@ -10,7 +10,6 @@ class PlanetCard extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.resident);
     this.props.residents.forEach(resident => {
       this.fetchResidents(resident)
     });
@@ -22,10 +21,12 @@ class PlanetCard extends Component {
         return response.json()
       })
       .then(data => {
-        this.state.residents.push(data.name);
-        this.setState({
-          residents: this.state.residents
-        })
+        if (this.props.residents.length) {
+          const residents = this.state.residents.push(data);
+          // this.setState({
+          //   residents: this.state.
+          // })
+        }
       })
     }
 
@@ -36,7 +37,7 @@ class PlanetCard extends Component {
         <p>Terrain: {this.props.terrain}</p>
         <p>Population: {this.props.population}</p>
         <p>Climate: {this.props.climate}</p>
-        <p>Residents: {this.state.residents.length ? this.state.residents.join(', ') : 'none'}</p>
+        <p>Residents: </p>
         <button className="favorite">Favorite</button>
       </article>
     )
