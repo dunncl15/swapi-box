@@ -5,6 +5,7 @@ import PlanetCard from '../PlanetCards/PlanetCards.js'
 import VehicleCard from '../VehicleCards/VehicleCards.js'
 
 const getPeople = (data) => {
+
   return data.map((person, i) => {
     return <PeopleCard
             key={i}
@@ -14,33 +15,23 @@ const getPeople = (data) => {
   })
 }
 
-const getPlanets = (data) => {
-  return data.map((planet, i) => {
-    return <PlanetCard
-            key={i} name={planet.name} terrain={planet.terrain} climate={planet.climate}
-            population={planet.population}
-            residents={planet.residents} />
-  })
-}
+const getVehicle = (data) => {
 
-const getVehicles = (data) => {
   return data.map((vehicle, i) => {
     return <VehicleCard
-            name={vehicle.name} />
+            key={i}
+            name={vehicle.name}
+            model={vehicle.model}
+            passenger={vehicle.passengers}
+            classCar={vehicle.vehicle_class} />
   })
 }
 
 const getCards = (selected, selectedCategory) => {
   if (selected === 'people') {
     return getPeople(selectedCategory)
-  }
-
-  if (selected === 'planets') {
-    return getPlanets(selectedCategory)
-  }
-
-  if (selected === 'vehicles') {
-    return getVehicles(selectedCategory)
+  } if (selected === 'vehicles') {
+    return getVehicle(selectedCategory)
   }
 }
 
@@ -48,9 +39,8 @@ const CardContainer = ({ selectedCategory, selected }) => {
 
   return (
     <div className="CardContainer">
-      <button>Favorites</button>      
-    { getCards(selected, selectedCategory) }
-
+      <button>Favorites</button>
+      { getCards(selected, selectedCategory) }
     </div>
   )
 }
