@@ -59,3 +59,9 @@
   text-align: center;
   font-size: 25px;
 }
+
+@media screen and (min-width: 768px) {
+  .btn-wrap {
+    justify-content: center;
+  }
+}
