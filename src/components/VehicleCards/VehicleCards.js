@@ -9,7 +9,7 @@ return (
     <p>Model: { model }</p>
     <p>Passenger Limit: { passengers }</p>
     <p>Vehicle Class: { vehicle_class }</p>
-    <button onClick={() => toggleFavorite(name)}>
+    <button className="favorite" onClick={() => toggleFavorite(name)}>
     Favorite
     </button>
   </article>
