@@ -18,7 +18,6 @@ const getPeople = (data) => {
 const getVehicle = (data) => {
 
   return data.map((vehicle, i) => {
-    console.log(vehicle.name)
     return <VehicleCard
             key={i}
             name={vehicle.name}

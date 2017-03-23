@@ -8,6 +8,8 @@ const VehicleCard = ({ name, model, passenger, classCar }) => {
       <p>Model: {model}</p>
       <p>Passenger Limit: {passenger}</p>
       <p>Vehicle Class: {classCar}</p>
+
+      <button className="favorite">Favorite</button>
     </article>
   )
 }
