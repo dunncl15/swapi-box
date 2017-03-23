@@ -2,6 +2,8 @@ import React              from 'react';
 import ReactDOM           from 'react-dom';
 import App                from './App';
 import { mount, shallow } from 'enzyme';
+import sinon              from 'sinon';
+
 
 describe('App', () => {
 
@@ -25,5 +27,12 @@ describe('App', () => {
 
     expect(wrapper.find('Buttons').length).toEqual(1);
   });
+
+  it('calls componentDidMount', () => {
+    sinon.spy(App.prototype, 'componentDidMount');
+    const wrapper = mount(<App />);
+    expect(App.prototype.componentDidMount).toHaveProperty('callCount', 1);
+    App.prototype.componentDidMount.restore();
+});
 
 });
