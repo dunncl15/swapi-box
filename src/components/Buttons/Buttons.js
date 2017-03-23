@@ -1,22 +1,27 @@
 import React from 'react';
 import './Buttons.css';
 
-const Buttons = ({ fetchData }) => {
+const Buttons = ({ fetchData, renderFavorites }) => {
   return (
     <div className="Buttons">
-        <button className="cat-btn"
-                onClick={() => fetchData('people')}>
+        <button
+        className="cat-btn"
+        onClick={() => fetchData('people')}>
         People
         </button>
-        <button className="cat-btn"
-                onClick={() => fetchData('planets')}>
+        <button
+        className="cat-btn"
+        onClick={() => fetchData('planets')}>
         Planets
         </button>
-        <button className="cat-btn"
-                onClick={() => fetchData('vehicles')}>
+        <button
+        className="cat-btn"
+        onClick={() => fetchData('vehicles')}>
         Vehicles
         </button>
-        <button className="cat-btn">Favorites</button>
+        <button disabled className="cat-btn" onClick={() => renderFavorites('favorites')}>
+        Favorites
+        </button>
     </div>
   )
 }
