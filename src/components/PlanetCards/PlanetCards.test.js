@@ -7,6 +7,12 @@ import PlanetCard         from './PlanetCards';
 
 describe('PlanetCard', () => {
 
+  const planet = {
+    name: 'earth',
+    population: 100,
+    language: 'english'
+  }
+
   it('Should have a favorite button', () => {
     const wrapper = shallow(
       <PlanetCard />
@@ -24,15 +30,4 @@ describe('PlanetCard', () => {
     expect(wrapper.find('h3').length).toEqual(1);
   });
 
-  it.skip('calls componentDidMount', () => {
-    sinon.spy(PlanetCard.prototype, 'componentDidMount');
-
-    const wrapper = mount(<PlanetCard />);
-
-    expect(PlanetCard.prototype.componentDidMount).to.have.property('callCount', 1);
-
-    PlanetCard.prototype.componentDidMount.restore();
-    // errors out since .forEach is undefined
-  });
-
-})
+});

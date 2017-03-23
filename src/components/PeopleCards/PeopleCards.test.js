@@ -1,9 +1,10 @@
 import React              from 'react';
 import { mount, shallow } from 'enzyme';
 import ReactDOM           from 'react-dom';
+import sinon              from 'sinon';
+import renderer           from 'react-test-renderer';
 
 import PeopleCard         from './PeopleCards';
-import renderer           from 'react-test-renderer';
 
 describe('PeopleCard', () => {
   const fakePerson = {
@@ -30,4 +31,12 @@ describe('PeopleCard', () => {
     expect(wrapper.find('h3').length).toEqual(1);
   });
 
-})
+  it('Should have a favorite button', () => {
+    const wrapper = shallow(
+      <PeopleCard />
+    );
+
+    expect(wrapper.find('button').length).toEqual(1);
+  });
+
+});
