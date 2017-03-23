@@ -1,15 +1,15 @@
 import React from 'react';
 import './VehicleCards.css'
 
-const VehicleCard = ({ name, model, passengers, type, toggleFavorite }) => {
+const VehicleCard = ({ name, model, passengers, vehicle_class, toggleFavorite }) => {
 
 return (
   <article className="VehicleCard">
     <h3>{ name }</h3>
     <p>Model: { model }</p>
     <p>Passenger Limit: { passengers }</p>
-    <p>Vehicle Class: { type }</p>
-    <button onClick={(name) => toggleFavorite(name)}>
+    <p>Vehicle Class: { vehicle_class }</p>
+    <button onClick={() => toggleFavorite(name)}>
     Favorite
     </button>
   </article>

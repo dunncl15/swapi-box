@@ -48,6 +48,12 @@ class App extends Component {
     this.setState({ favorites: this.state.favorites.concat(favorites) });
   }
 
+  removeFavorite(name) {
+    const index = this.state.favorites.findIndex(card => card.name === name);
+    this.state.favorites.splice(index, 1)
+    this.setState({ favorites: this.state.favorites })
+  }
+
   toggleFavorite(name) {
     if (!this.state.favorites.length){
       this.addFavorite(name)
@@ -55,13 +61,6 @@ class App extends Component {
     this.state.favorites.map(card => {
       return card.name !== name ? this.addFavorite(name) : this.removeFavorite(name);
     })
-  }
-
-  removeFavorite(name) {
-    const index = this.state.favorites.findIndex(card => card.name === name);
-    console.log(index);
-    this.state.favorites.splice(index, 1)
-    this.setState({ favorites: this.state.favorites })
   }
 
   renderFavorites(value) {

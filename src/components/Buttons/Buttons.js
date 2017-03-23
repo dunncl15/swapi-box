@@ -19,7 +19,7 @@ const Buttons = ({ fetchData, renderFavorites }) => {
         onClick={() => fetchData('vehicles')}>
         Vehicles
         </button>
-        <button disabled className="cat-btn favorites" onClick={() => renderFavorites('favorites')}>
+        <button className="cat-btn" onClick={() => renderFavorites('favorites')}>
         Favorites
         </button>
     </div>
