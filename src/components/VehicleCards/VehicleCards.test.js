@@ -46,15 +46,4 @@ describe('VehicleCard', () => {
     });
   });
 
-  it('renders correctly', () => {
-
-    const rendered = renderer.create(
-      <VehicleCard fakeCar={fakeCar} />
-    );
-    expect(rendered.toJSON()).toMatchSnapshot();
-});
-//render the component, and assert that it matches the snapshot
-
-
-
 });

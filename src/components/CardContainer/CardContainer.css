@@ -1,9 +1,9 @@
 .CardContainer {
   position: relative;
-  top: -190px;
+  top: -75px;
   width: 100%;
   padding: 0 2.5%;
-  background-color: #fff;
+  background-color: #000;
   color: #000;
   overflow: auto;
 }

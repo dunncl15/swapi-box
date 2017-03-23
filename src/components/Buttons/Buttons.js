@@ -5,17 +5,17 @@ const Buttons = ({ fetchData, renderFavorites }) => {
   return (
     <div className="Buttons">
         <button
-        className="cat-btn"
+        className="cat-btn people"
         onClick={() => fetchData('people')}>
         People
         </button>
         <button
-        className="cat-btn"
+        className="cat-btn planets"
         onClick={() => fetchData('planets')}>
         Planets
         </button>
         <button
-        className="cat-btn"
+        className="cat-btn vehicles"
         onClick={() => fetchData('vehicles')}>
         Vehicles
         </button>

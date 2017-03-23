@@ -9,4 +9,17 @@
   position: absolute;
   top: 5px;
   right: 5px;
+  margin: 5px;
+  border: 1px solid #FCBE00;
+  background-color: #000;
+  color: #fff;
+}
+
+.favorite:hover {
+  background-color: #FCBE00;
+  color: #000;
+}
+
+.title {
+  font-weight: 700;
 }
