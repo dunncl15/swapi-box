@@ -48,9 +48,7 @@ const CardContainer = ({ selectedCategory, selected }) => {
 
   return (
     <div className="CardContainer">
-      <button>Favorites</button>      
     { getCards(selected, selectedCategory) }
-
     </div>
   )
 }

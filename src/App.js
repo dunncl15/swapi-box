@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Buttons from './components/Buttons/Buttons.js';
+import Film from './components/Film/Film.js'
 import CardContainer from './components/CardContainer/CardContainer.js';
 
 
@@ -47,9 +48,10 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Swapi-box</h2>
+          <Buttons
+          fetchData={(type) => this.fetchData(type)} />
         </div>
-        <Buttons
-        fetchData={(type) => this.fetchData(type)} film={this.state.openingFilm} />
+        <Film film={this.state.openingFilm}/>
         { this.state.selectedCategory.length &&
         <CardContainer
         selected={this.state.selected}

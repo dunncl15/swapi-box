@@ -10,7 +10,6 @@ class PlanetCard extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.resident);
     this.props.residents.forEach(resident => {
       this.fetchResidents(resident)
     });

@@ -1,12 +1,9 @@
 import React from 'react';
-import Film from '../Film/Film';
-
 import './Buttons.css';
 
-const Buttons = ({ film, fetchData }) => {
+const Buttons = ({ fetchData }) => {
   return (
     <div className="Buttons">
-      <div className="btn-wrap">
         <button className="cat-btn"
                 onClick={() => fetchData('people')}>
         People
@@ -19,8 +16,7 @@ const Buttons = ({ film, fetchData }) => {
                 onClick={() => fetchData('vehicles')}>
         Vehicles
         </button>
-      </div>
-      <Film film={film}/>
+        <button className="cat-btn">Favorites</button>
     </div>
   )
 }
