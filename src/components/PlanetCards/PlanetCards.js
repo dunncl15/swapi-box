@@ -5,16 +5,14 @@ class PlanetCard extends Component {
   constructor() {
     super()
     this.state = {
-      planetData: [],
+      residents: [],
     }
   }
 
   componentDidMount() {
-    this.props.selectedCategory.forEach(obj => {
-      obj.residents.map(resident => {
-        this.fetchResidents(resident);
-      })
-    })
+    this.props.residents.forEach(resident => {
+      this.fetchResidents(resident)
+    });
   }
 
   fetchResidents(resident) {
@@ -23,36 +21,25 @@ class PlanetCard extends Component {
         return response.json()
       })
       .then(data => {
-        console.log(data.name)
-        this.props.selectedCategory.map(obj => {
-          if (!obj.residents.length) {
-            obj.residents = 'none'
-          }
-        })
-        this.setState({ planetData: this.props.selectedCategory })
+        if (this.props.residents.length) {
+          const residents = this.state.residents.push(data);
+          // this.setState({
+          //   residents: this.state.
+          // })
+        }
       })
     }
 
-  helpResidents() {
-
-  }
-
   render() {
     return (
-      <div>
-      {this.state.planetData.map((obj, i) => {
-        return (
-          <article key={i} className="PlanetCard">
-            <h3>Name: {obj.name}</h3>
-            <p>Terrain: {obj.terrain}</p>
-            <p>Population: {obj.population}</p>
-            <p>Climate: {obj.climate}</p>
-            <p>Residents: {obj.residents}</p>
-            <button className="favorite">Favorite</button>
-          </article>
-        )
-      })}
-      </div>
+      <article className="PlanetCard">
+        <h3>Name: {this.props.name}</h3>
+        <p>Terrain: {this.props.terrain}</p>
+        <p>Population: {this.props.population}</p>
+        <p>Climate: {this.props.climate}</p>
+        <p>Residents: </p>
+        <button className="favorite">Favorite</button>
+      </article>
     )
   }
 }
