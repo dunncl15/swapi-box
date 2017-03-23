@@ -1,26 +1,27 @@
 import React from 'react';
-import Film from '../Film/Film';
-
 import './Buttons.css';
 
-const Buttons = ({ film, fetchData }) => {
+const Buttons = ({ fetchData, renderFavorites }) => {
   return (
     <div className="Buttons">
-      <div className="btn-wrap">
-        <button className="cat-btn"
-                onClick={() => fetchData('people')}>
+        <button
+        className="cat-btn"
+        onClick={() => fetchData('people')}>
         People
         </button>
-        <button className="cat-btn"
-                onClick={() => fetchData('planets')}>
+        <button
+        className="cat-btn"
+        onClick={() => fetchData('planets')}>
         Planets
         </button>
-        <button className="cat-btn"
-                onClick={() => fetchData('vehicles')}>
+        <button
+        className="cat-btn"
+        onClick={() => fetchData('vehicles')}>
         Vehicles
         </button>
-      </div>
-      <Film film={film}/>
+        <button disabled className="cat-btn" onClick={() => renderFavorites('favorites')}>
+        Favorites
+        </button>
     </div>
   )
 }
