@@ -21,7 +21,9 @@ class App extends Component {
       return response.json()
     })
     .then((data) => {
-      this.setState({ selected: value, selectedCategory: data.results})
+      this.setState({
+        selected: value,
+        selectedCategory: data.results })
     })
   }
 
@@ -48,7 +50,7 @@ class App extends Component {
         </div>
         <Buttons
         fetchData={(type) => this.fetchData(type)} film={this.state.openingFilm} />
-        { this.state.selectedCategory.length === 10 &&
+        { this.state.selectedCategory.length &&
         <CardContainer
         selected={this.state.selected}
         selectedCategory={this.state.selectedCategory}

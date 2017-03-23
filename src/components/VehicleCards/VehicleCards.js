@@ -1,37 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './VehicleCards.css'
 
-class VehicleCard extends Component {
-  constructor() {
-    super()
-    this.state = {
-      vehicleData: []
-    }
-  }
+const VehicleCard = ({ name }) => {
 
-  componentWillMount() {
-    this.setState({
-      vehicleData: this.props.selectedCategory
-    })
-  }
-
-  render() {
-    return (
-      <div>
-      {this.props.selectedCategory.map((vehicle, i) => {
-        return (
-          <article key={i} className="VehicleCard">
-            <h3>{vehicle.name}</h3>
-            <p>Model: {vehicle.model}</p>
-            <p>Passenger Limit: {vehicle.passengers}</p>
-            <p>Vehicle Class: {vehicle.vehicle_class}</p>
-          </article>
-        )
-      })}
-      </div>
-    )
-  }
+return (
+  <article className="VehicleCard">
+    <h3>{name}</h3>
+    <p>Model: </p>
+    <p>Passenger Limit: </p>
+    <p>Vehicle Class: </p>
+  </article>
+  )
 
 }
+
 
 export default VehicleCard;
